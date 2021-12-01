@@ -1,0 +1,18 @@
+<div class="container">
+    <h3>Post</h3>
+    <div class="card text-center mt-3" *ngFor="let val of blog;let i=index">
+        <div  [ngClass]="{'green':color==true}">
+         {{val.name}}
+        </div>
+        <span [ngClass]="{'red':color==false}">Poste Don't Like</span>
+        <div class="card-body">
+          <h5 class="card-title">Special title treatment</h5>
+          <p class="card-text" >{{val.content}}</p>
+          <button (click)="getGreen()" class="btn btn-success">Love it</button>
+          <button  (click)="getRed()" class="btn btn-danger">Don't Love it</button>
+        </div>
+        <!-- <div class="card-footer text-muted">
+          2 days ago
+        </div> -->
+      </div>
+</div>

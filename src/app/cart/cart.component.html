@@ -1,0 +1,23 @@
+<div class="container">
+    <div class="row">
+        <input class="form-control form-control-lg" [disabled]="!isView" type="text" placeholder=".form-control-lg" aria-label=".form-control-lg example">
+        <input class="form-control" type="text" *ngIf="var1==='mon'" placeholder="Default input" aria-label="default input example">
+        <input class="form-control form-control-sm"  type="text" placeholder=".form-control-sm" aria-label=".form-control-sm example">
+    </div>
+    <button class="btn btn-primary mt-4" type="submit" (click)="getFirst()">Envoyer</button>
+</div>
+<div class="container mt-5">
+    <div class="row">
+        <select  class="form-control" (change)="getChange()" id="tab" value="0">
+            <option *ngFor="let val of montab">{{val.name}}:{{val.value}}</option>
+        </select>
+        <!-- <input  class="form-control form-control-sm"  type="text" aria-label=".form-control-sm example"/> -->
+
+    </div>
+</div>
+
+<!-- <div *ngFor="let val of montab ;let i=index">
+{{val.name}},{{i}}
+
+</div> -->
+
