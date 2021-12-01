@@ -24,7 +24,7 @@
   </div>
   <div class="card mt-2">
     <div class="card-body">
-      <form (ngSubmit)="firstTest(profileform)" #profileform="ngForm">
+      <form novalidate (ngSubmit)="firstTest(profileform)" #profileform="ngForm">
         <div class="row">
           <div class="col-md-6">
             <label>Nom</label>
@@ -41,15 +41,33 @@
               <span *ngIf="nomvar.errors?.required">
                 Le champ nom est obligatoire
               </span>
+              <span *ngIf="nomvar.errors?.minlength">
+                minimum 3 caracters
+              </span>
             </div>
           </div>
           <div class="col-md-6">
             <label>Prenom</label>
             <input type="text"
              name="prenom"
-             [(ngModel)]="user.prenom" 
+             [(ngModel)]="user.prenom"
+             required
+             minlength="4"
+             maxlength="7"
+             #prenomvar="ngModel"
+             [ngClass]="{'is-invalid':prenomvar.touched && !prenomvar.valid}"
              class="form-control" 
              placeholder="votre prenom">
+             <div class="invalid-feedback">
+              <span *ngIf="prenomvar.errors?.required">
+                Ce champ est obligatoire
+              </span>
+             </div>
+             <div class="invalid-feedback">
+              <span *ngIf="prenomvar.errors?.minlength">
+                minimu 4 caracteres
+              </span>
+             </div>
           </div>
         </div>
         <div class="row mt-3">
@@ -58,16 +76,45 @@
             <input type="email"
              name="email"
              [(ngModel)]="user.email"
+             required
+             email
+             #emailvar="ngModel"
+             [ngClass]="{'is-invalid':emailvar.touched && !emailvar.valid}"
              class="form-control"
              placeholder="Votre e-mail">
+             <div class="invalid-feedback">
+                <span *ngIf="emailvar.errors?.required">
+                  Ce champ est obligatoire
+                </span>
+             </div>
+             <div class="invalid-feedback">
+              <span *ngIf="emailvar.errors?.email">
+                l'email n'est pas valide
+              </span>
+           </div>
           </div>
           <div class="col-md-6">
             <label>Telephone</label>
             <input type="tel"
              name="telephone"
+             #phonevar="ngModel"
+             required
+             minlength="9"
              [(ngModel)]="user.telephone"
+             [ngClass]="{'is-invalid': phonevar.touched && !phonevar.valid}"
              class="form-control"
              placeholder="votre Telephone">
+             <div class="invalid-feedback">
+               <span *ngIf="phonevar.errors?.required">
+                Veuillez Fournir votre numero de telephone
+               </span>
+              
+             </div>
+             <div class="invalid-feedback">
+              <span *ngIf="phonevar.errors?.minlength">
+                il faut saisir au moins 7 chiffres
+               </span>
+             </div>
           </div>
         </div> 
         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
