@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { CartComponent } from './cart/cart.component';
 import { ProfilEditorComponent } from './profil-editor/profil-editor.component';
 import { BlogComponent } from './blog/blog.component';
+import { FormglobComponent } from './formglob/formglob.component';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { BlogComponent } from './blog/blog.component';
     AppComponent,
     CartComponent,
     ProfilEditorComponent,
-    BlogComponent
+    BlogComponent,
+    FormglobComponent
   ],
   imports: [
     BrowserModule,
