@@ -1,17 +1,43 @@
-<!-- <div>
-  <form (ngSubmit)="onSubmit()" [formGroup]="form">
-
-    <div *ngFor="let question of questions" class="form-row">
-      <app-formglob [question]="question" [form]="form"></app-formglob>
+<div class="container">
+  <div class="card">
+    <div class="card-header text-white bg-info">
+      Formulaire Reactive
     </div>
-
-    <div class="form-row">
-      <button type="submit" [disabled]="!form.valid">Save</button>
-    </div>
-  </form>
-
-  <div *ngIf="payLoad" class="form-row">
-    <strong>Saved the following values</strong><br>{{payLoad}}
   </div>
+  <div class="card mt-2">
+    <div class="card-body">
+      <form (ngSubmit)="test()" novalidate [formGroup]="infoForm">
+        <div class="row">
+          <div class="col-md-6">
+            <label>Nom</label>
+            <input type="text" class="form-control" formControlName="nom" placeholder="Votre Nom">
+          </div>
+          <div class="col-md-6">
+            <label>Prenom</label>
+            <input type="text" class="form-control" [ngClass]="{'is-invalid':this.infoForm.touched}" formControlName="prenom" placeholder="Votre Prenom">
+            <div *ngIf="this.infoForm.get('prenom').touched">
+              <span> il y'a une erreur</span>
+            </div>
+          </div>
+        </div>
+        <div class="row mt-2">
+          <div class="col-md-6">
+            <label for="">Adresse</label>
+            <input type="text" class="form-control" formControlName="adresse" placeholder="Votre Adresse">
+          </div>
+          <div class="col-md-6">
+            <label for="">Telephone</label>
+            <input type="text" class="form-control" formControlName="telephone" placeholder="Votre Telephone">
+          </div>
+        </div>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+          <!-- <button class="btn btn-primary me-md-2" type="button">Button</button> -->
+          <button class="btn btn-info mt-3" type="submit">Tester</button>
+          <!-- <input type="date" max='2000-13-13' /> -->
+        </div>
+      </form>
+    </div>
+  </div>
+  
+
 </div>
- -->
